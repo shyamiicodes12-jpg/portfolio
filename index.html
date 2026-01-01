@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <title>Profile Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 
@@ -233,16 +234,137 @@ section {
 }
 .home-img {
   max-width: 480px;      /* controls size */
-  height: auto;          /* keeps aspect ratio */
+  height: 600px;          /* keeps aspect ratio */
   border-radius: 8px;    /* slight rectangle rounding (optional) */
   object-fit: cover;
 }
+#about {
+  padding-bottom: 180px !important; /* increase as needed */
+}
+#more {
+  padding-bottom: 230px !important; /* adjust value if needed */
+}
+#skills {
+  padding-bottom: 250px !important; /* adjust value if needed */
+}
+#hobbies {
+  padding-bottom: 250px !important; /* adjust value if needed */
+}
+
+
+/* COMMON CARD BASE */
+#more .card,
+#skills .card,
+#hobbies .card {
+  transition: all 0.35s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* SUBTLE TOP ACCENT LINE */
+#more .card::before,
+#skills .card::before,
+#hobbies .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7e22ce, #a855f7);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* HOVER EFFECT */
+#more .card:hover,
+#skills .card:hover,
+#hobbies .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(126, 34, 206, 0.18);
+  border-color: rgba(126, 34, 206, 0.35);
+}
+
+/* SHOW TOP LINE ON HOVER */
+#more .card:hover::before,
+#skills .card:hover::before,
+#hobbies .card:hover::before {
+  opacity: 1;
+}
+
+/* TITLE COLOR CHANGE */
+#more .card:hover h5,
+#skills .card:hover h6,
+#hobbies .card:hover h5 {
+  color: #7e22ce;
+  transition: color 0.3s ease;
+}
+
+/* IMAGE HOVER (SKILLS & HOBBIES) */
+#skills .card:hover img,
+#hobbies .card:hover img {
+  transform: scale(1.12);
+  transition: 0.35s ease;
+}
+
+/* TEXT SMOOTHNESS */
+#more p,
+#skills p,
+#hobbies p {
+  transition: color 0.3s ease;
+}
+
+#more .card:hover p,
+#skills .card:hover p,
+#hobbies .card:hover p {
+  color: #374151;
+}
+
+/* MOBILE: KEEP IT CLEAN */
+@media (max-width: 768px) {
+  #more .card:hover,
+  #skills .card:hover,
+  #hobbies .card:hover {
+    transform: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+}
+.btn-purple {
+  background: #7e22ce;
+  color: #ffffff;
+}
+
+.btn-purple:hover,
+.btn-purple:focus {
+  background: #6a1bb5;
+  color: #ffffff;   /* keep text white */
+}
+
+social-icons {
+      display: flex;
+      gap: 25px;
+    }
+
+    .social-icons a i {
+      font-size: 48px;          /* same as fa-3x */
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .linkedin { color: #0A66C2; }
+    .whatsapp { color: #25D366; }
+    .instagram { color: #E1306C; }
+    .github { color: #000; }
+
+    .social-icons a i:hover {
+      transform: scale(1.2);
+    }
 
 </style>
 
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
   <div class="container">
@@ -254,7 +376,7 @@ section {
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#more">More About Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="#more">Education</a></li>
         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
         <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -269,19 +391,34 @@ section {
 <!-- IMAGE -->
     <div class="col-md-6 text-center">
       <img 
-        src="images/13f8840b-bbbb-47c4-a117-4166d7f2df65-0_毒霸看图1.webp"
+        src="images/472555D9-8E34-4DAA-9BA1-E0372702102D.png"
         class="img-fluid rounded shadow-lg home-img"
         alt="Profile Image"
       />
     </div>
  <!-- TEXT -->
     <div class="col-md-6 text-center text-md-start ps-4">
-      <h1 class="fw-bold mb-3">Welcome to My Profile</h1>
+      <h1 class="fw-bold mb-3 pb-3">Shyam Sunder Sharma</h1>
       <p class="lead text-dark">
-  Hello! I’m Shyam Sunder Sharma, a passionate BCA student and mobile app developer specializing in iOS (Swift) and Android platforms. I focus on creating elegant, intuitive, and high-performance apps that deliver seamless user experiences.  
-  With a strong interest in AI integration, I enjoy experimenting with smart features that enhance app functionality. I thrive on solving problems, learning new technologies, and turning innovative ideas into functional products.  
-  My goal is to build applications that are not only technically robust but also visually appealing and user-friendly, bridging the gap between technology and creativity.
-</p>
+  Hello! I’m Shyam Sunder Sharma, a passionate BCA student and mobile app developer specializing in iOS (Swift) and Android platforms.   
+  </p>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com" style="text-decoration: none;" >
+      <i class="fa-brands fa-square-linkedin linkedin"></i>
+    </a>
+
+    <a href="https://wa.me/919999999999" style="text-decoration: none;">
+      <i class="fa-brands fa-whatsapp whatsapp"></i>
+    </a>
+
+    <a href="https://www.instagram.com" style="text-decoration: none;">
+      <i class="fa-brands fa-instagram instagram"></i>
+    </a>
+
+    <a href="https://github.com" style="text-decoration: none;">
+      <i class="fa-brands fa-github github"></i>
+    </a>
+  </div>
 
     </div>
   </div>
@@ -290,16 +427,17 @@ section {
 <!-- About Section -->
 <section id="about" class="bg-light fade-section py-5">
   <div class="container">
-    <h2 class="section-title text-center mb-4">About Me</h2>
+    <h2 class="section-title text-center mb-4 pb-4">About Me</h2>
 
     <div class="row align-items-center g-4">
 
       <!-- IMAGE -->
       <div class="col-md-6">
         <img
-          src="images/a-business-man-stands-against-white-background-with-his-arms-crossed-ai-generative-photo.jpg"
-          class="img-fluid rounded shadow-lg w-100"
+          src="images/472555D9-8E34-4DAA-9BA1-E0372702102D.png"
+          class="img-fluid rounded shadow-lg w-60"
           alt="Profile"
+          style="width: 550px;"
         />
       </div>
 
@@ -318,31 +456,61 @@ section {
 
 <!-- More About Me Section -->
 <section id="more" class="fade-section">
-  <div class="container">
-    <h2 class="section-title">More About Me</h2>
+  <div class="container-fluid pt-5">
+    <h2 class="section-title pb-5">My Education</h2>
+
     <div class="row g-4">
 
       <!-- Education -->
       <div class="col-md-4">
-        <div class="card p-4 text-center more-card" style="background: linear-gradient(135deg, #f0f4ff, #e0e7ff);">
-          <h5 class="fw-bold">Education</h5>
-          <p>BCA Student learning full-stack and mobile development.</p>
+        <div class="card p-4 text-center more-card"
+            style="background: linear-gradient(135deg, #fff7f0, #ffe4d6);">
+          <h5 class="fw-bold mb-3">Education</h5>
+          <p class="mb-2">
+            Currently pursuing <strong>Bachelor of Computer Applications (BCA)</strong>.
+          </p>
+          <p class="mb-2">
+            Building a strong foundation in programming, data structures, and software development.
+          </p>
+          <p class="small text-muted">
+            Focused on mobile app development, UI/UX basics, and problem-solving skills.
+          </p>
         </div>
       </div>
 
       <!-- Goals -->
       <div class="col-md-4">
-        <div class="card p-4 text-center more-card" style="background: linear-gradient(135deg, #fff7f0, #ffe4d6);">
-          <h5 class="fw-bold">Goals</h5>
-          <p>Become an iOS + Android developer and integrate AI.</p>
+        <div class="card p-4 text-center more-card"
+             style="background: linear-gradient(135deg, #fff7f0, #ffe4d6);">
+          <h5 class="fw-bold mb-3">Goals</h5>
+          <p class="mb-2">
+            Become a professional <strong>iOS and Android application developer</strong>.
+          </p>
+          <p class="mb-2">
+            Design and build scalable, high-performance mobile applications.
+          </p>
+          <p class="small text-muted">
+            Explore AI integration to create smarter, more interactive user experiences.
+          </p>
         </div>
       </div>
 
       <!-- Strengths -->
       <div class="col-md-4">
-        <div class="card p-4 text-center more-card" style="background: linear-gradient(135deg, #f0fff6, #d6ffe4);">
-          <h5 class="fw-bold">Strengths</h5>
-          <p>Problem solving, curiosity, consistency, and learning new things.</p>
+        <div class="card p-4 text-center more-card"
+        style="background: linear-gradient(135deg, #fff7f0, #ffe4d6);">
+          <h5 class="fw-bold mb-3">Strengths</h5>
+          <p class="mb-2">
+            Strong problem-solving mindset with attention to detail.
+          </p>
+          <p class="mb-2">
+            Consistent learner who enjoys exploring new technologies.
+          </p>
+          <p class="small text-muted">
+            Able to adapt quickly and improve through practice and feedback.
+           I am strong in logical thinking and enjoy building solutions on my own.
+I learn from confusion and mistakes.
+          </p>
         </div>
       </div>
 
@@ -352,9 +520,9 @@ section {
 
 
 <!-- Skills Section -->
-<section id="skills" class="bg-light py-5 fade-section">
-  <div class="container">
-    <h2 class="section-title text-center mb-4">Skills</h2>
+<section id="skills" class="bg-light py-5 fade-section pb-3">
+  <div class="container-fluid pt-5">
+    <h2 class="section-title text-center mb-4 pb-5">Skills</h2>
 
     <div class="row g-4">
 
@@ -420,8 +588,8 @@ section {
 
 <!-- Hobbies Section -->
 <section id="hobbies" class="fade-section py-5" style="background:#f8f9fa;">
-  <div class="container">
-    <h2 class="section-title text-center mb-5">Hobbies</h2>
+  <div class="container-fluid pt-4">
+    <h2 class="section-title text-center pb-4">Hobbies</h2>
 
     <div class="row g-4 justify-content-center">
 
@@ -483,7 +651,7 @@ section {
       <div class="col-md-8">
 
         <div class="contact-card p-4">
-          <h4 class="mb-4 fw-bold text-purple">Get in Touch</h4>
+          <h4 class="mb-4 fw-bold text-grey">Get in Touch</h4>
 
           <form>
             <div class="mb-3">
@@ -512,8 +680,8 @@ section {
           </form>
 
           <div class="text-center mt-4">
-            <p class="mb-1"><strong>Email:</strong> sss2003sharma@gmail.com</p>
-            <p class="mb-1"><strong>Phone:</strong> +91 74xx-xxxxxx-xx</p>
+            <p class="mb-1"><strong>Email:</strong> sss2333@gmail.com</p>
+            <p class="mb-1"><strong>Phone:</strong> +91 74646 535353</p>
         </div>
 
         </div>
@@ -574,8 +742,6 @@ $(document).ready(function () {
 
 </body>
 </html>
-
-
 
 
 
